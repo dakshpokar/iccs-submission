@@ -12,9 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="cart" element={<Cart />} />
+          <Route index  element={<Products />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

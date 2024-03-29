@@ -8,13 +8,8 @@ const { Header, Content, Footer } = Layout;
 
 const items = [
   {
-    key: '/',
-    label: 'Home',
-    icon: <HomeOutlined />,
-  },
-  {
     label: 'Products',
-    key: '/products',
+    key: '/',
     icon: <RubyOutlined />
   },
 ];
@@ -27,7 +22,7 @@ const PageLayout = () => {
   const onClick = (e) => {
     navigate(e.key)
   };
-  
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
