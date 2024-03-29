@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Input, Space, Typography, Button, InputNumber } from 'antd';
 import debounce from 'lodash.debounce';
+import ProductItem from './ProductItem';
 
 const { Search } = Input;
 const { Title, Paragraph } = Typography;
@@ -84,11 +85,18 @@ const Products = () => {
         value={searchText}
         style={{ width: 200, marginBottom: 16 }}
       />
-      <Table
+      {/* <Table
         dataSource={filteredProducts}
         columns={columns}
         pagination={false}
-      />
+      /> */}
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {filteredProducts.map(product => (
+          <ProductItem
+            product={product}
+          />
+        ))}
+        </div>
     </div>
   );
 };

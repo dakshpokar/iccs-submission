@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Menu, theme, Button, Badge } from 'antd';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { HomeOutlined, ShoppingCartOutlined,RubyOutlined } from '@ant-design/icons';
+import { useShoppingCart } from '../context/ShoppingCartContext';
 
 const { Header, Content, Footer } = Layout;
 
@@ -21,6 +22,7 @@ const items = [
 const PageLayout = () => {
   const [current, setCurrent] = useState('/');
   const navigate = useNavigate();
+  const { openCart, cartQuantity } = useShoppingCart();
 
   const onClick = (e) => {
     navigate(e.key)
@@ -50,11 +52,9 @@ const PageLayout = () => {
             minWidth: 0,
           }}
         />
-        <Link to="/cart">
-        <Badge>
-          <Button type="primary" shape="circle" icon={<ShoppingCartOutlined />} style={{padding: '5px'}}/>
+        <Badge count={cartQuantity}>
+          <Button type="primary" onClick={openCart} shape="circle" icon={<ShoppingCartOutlined />} style={{padding: '5px'}}/>
         </Badge>
-        </Link>
       </Header>
       <Content
         style={{

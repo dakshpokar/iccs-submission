@@ -4,9 +4,11 @@ import Cart from './pages/Cart';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import PageLayout from './pages/PageLayout';
+import { ShoppingCartProvider } from './context/ShoppingCartContext';
 
 function App() {
   return (
+    <ShoppingCartProvider>      
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<PageLayout />}>
@@ -17,6 +19,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+      </ShoppingCartProvider>
   );
 }
 
