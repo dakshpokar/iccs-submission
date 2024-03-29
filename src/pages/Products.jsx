@@ -26,7 +26,8 @@ const Products = () => {
   const handleSearch = debounce(searchText => {
     setSearchText(searchText);
     const filtered = products.filter(product =>
-      product.title.toLowerCase().includes(searchText.toLowerCase())
+      product.title.toLowerCase().includes(searchText.toLowerCase()) || 
+      product.category.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredProducts(filtered);
   }, 30);
