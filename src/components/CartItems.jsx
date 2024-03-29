@@ -16,7 +16,7 @@ const CartItems = ({product}) => {
           <div style={{display: 'flex', alignItems: 'center'}}>
             <div >
                 <img
-                    src={product.images[0]}
+                    src={product.thumbnail}
                     alt={product.title}
                     style={{
                     width: 100,

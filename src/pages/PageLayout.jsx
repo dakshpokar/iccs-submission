@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Menu, theme, Button, Badge } from 'antd';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { HomeOutlined, ShoppingCartOutlined,RubyOutlined } from '@ant-design/icons';
 import { useShoppingCart } from '../context/ShoppingCartContext';
 
@@ -14,24 +14,24 @@ const items = [
   },
   {
     label: 'Products',
-    key: 'products',
+    key: '/products',
     icon: <RubyOutlined />
   },
 ];
 
 const PageLayout = () => {
-  const [current, setCurrent] = useState('/');
   const navigate = useNavigate();
+  const location = useLocation();
   const { openCart, cartQuantity } = useShoppingCart();
 
   const onClick = (e) => {
     navigate(e.key)
-    setCurrent(e.key);
   };
-
+  
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
   return (
     <Layout>
       <Header
@@ -43,7 +43,7 @@ const PageLayout = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          selectedKeys={[current]}
+          selectedKeys={[location.pathname]}
           onClick={onClick}
           defaultSelectedKeys={['2']}
           items={items}
